@@ -13,8 +13,16 @@ export default {
     async create(req: Request, res: Response) {
         const emailService = new EmailService();
 
-        emailService.sendMail({ name: 'Gustavo Saboya', email: 'gustavo@example.com' },
-            { subject: 'Greetings', body: 'Welcome to the team, Gustavo!' });
+        emailService.sendMail({
+            to: {
+                name: 'Gustavo Saboya',
+                email: 'gustavo@example.com'
+            },
+            message: {
+                subject: 'Greetings',
+                body: 'Welcome to the team, Gustavo!'
+            }
+        });
 
         return res.send();
     }
